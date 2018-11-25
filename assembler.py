@@ -4,31 +4,39 @@ import queue as Q
 import sys
 import re
 
+def get_bin(x, n):
+    bit_string_list = list(format(abs(x), 'b').zfill(n))
+    if(x<0):
+        for i in range(len(bit_string_list)):
+            bit_string_list[i] = '0' if bit_string_list[i] == '1' else '1'
+        bit_string = ''.join(bit_string_list)
+        x = int(bit_string,2)+1
+        bit_string = format(abs(x), 'b')
+    else:
+        bit_string = ''.join(bit_string_list)
+    return bit_string
+
 
 def op_decoding(op,beg,dictt,opecode_dict,operand_dict):
     operand_opcode = ''
     additional_word = ''
     match = re.match(r"([@]*)([\-]*[0-9]+)(\([Rr][0-7]\))", op, flags=0) # case of the operand @XRn
-    def get_bin(x, n): return format(x, 'b').zfill(n)
+
+
     if match:
         at,x,reg=match.groups()
         operand=at+"x"+reg.lower()
         operand_opcode=operand_dict[operand]
-        additional_word = list(get_bin(int(x), 16))
-        if additional_word[0]=='-':
-            additional_word[0]='1'
-        additional_word=''.join(additional_word)    
+        additional_word = get_bin(int(value), 16)   
         #print(operand_opcode,"  ",additional_word)
         return(operand_opcode, additional_word)
+
     match = re.match(r"(#)([\-]*[0-9]+)", op,flags=0)  # case of the operand immediate value
     if match:
         hashh, value = match.groups()
         operand ="(r6)+"
         operand_opcode = operand_dict[operand]
-        additional_word = list(get_bin(int(value), 16))
-        if additional_word[0] == '-':
-            additional_word[0] = '1'
-        additional_word = ''.join(additional_word)
+        additional_word = get_bin(int(value), 16)
         return(operand_opcode, additional_word)
     
     if op in dictt:    # case of variable  
@@ -37,10 +45,7 @@ def op_decoding(op,beg,dictt,opecode_dict,operand_dict):
         operand_opcode = operand_dict[operand]
         x=address-(beg+2)
         #print(" address to jumbp to "+str(address)+" current after fecthx x "+str(beg+2)+ " offset  "+ str(x))
-        additional_word = list(get_bin(int(x), 16))
-        if additional_word[0] == '-':
-            additional_word[0] = '1'
-        additional_word = ''.join(additional_word)
+        additional_word = get_bin(int(x), 16)
         #print(operand_opcode, additional_word)
         return(operand_opcode, additional_word)
     
@@ -140,18 +145,14 @@ def branch(line,beg,dictt,opcode_dict):
     output_word=''
     if op in opcode_dict :
         output_word=output_word+opcode_dict[op]
-    else :
+    else:
         print(" error in opcode   ", line)
         sys.exit()
 
     if label in dictt:
         address=dictt[label]
         offset =address-(beg+1)
-        def get_bin(x, n): return format(x, 'b').zfill(n)
-        offset =list(get_bin(offset,11))
-        if offset[0]=='-':
-            offset[0]='1'
-        offset=''.join(offset)    
+        offset =get_bin(offset,11) 
         output_word = output_word+offset
         return output_word
 
@@ -161,7 +162,7 @@ def branch(line,beg,dictt,opcode_dict):
  
 
 def get_tables():
-    f=open("Arch_project/codes.txt",'r')
+    f=open("./codes.txt",'r')
     lines=f.readlines()
     operand={}
     opcode ={}
@@ -171,7 +172,7 @@ def get_tables():
         line =line.replace("\n",'')
         key, space, value = line.partition(' ')
         operand[key]=value
-    for i in range (64,94):
+    for i in range (64,95):
         line = lines[i]
         line = re.sub(' +', ' ', line)
         line = line.replace("\n", '')
@@ -191,16 +192,15 @@ def generate_opcode(lines_with_type,dict,output,debug):
             (instructions_words,new_beg)=op2_decoding(line,beg,dict,output,debug,opcode,operand,False)
             beg = new_beg+1
             output.append(instructions_words+'\n')
-        #elif line_type == "jsr":
         elif line_type=='xnor':
             (instructions_words,new_beg)=op2_decoding(line,beg,dict,output,debug,opcode,operand,True)
             beg = new_beg+1
             output.append(instructions_words+'\n')
-        elif line_type == "1op":
+        elif line_type == "1op" or  line_type == "jsr":
             (instructions_words,new_beg)=op1_decoding(line,beg,dict,output,debug,opcode,operand)
             beg = new_beg+1
             output.append(instructions_words+'\n')
-        elif line_type == "br":
+        elif line_type == "br" or line_type == "jsr":
             instructions_words = branch(line, beg, dict, opcode)
             debug.writelines("\n"+instructions_words+'\n')
             beg=beg+1
@@ -208,11 +208,7 @@ def generate_opcode(lines_with_type,dict,output,debug):
 
         elif line_type == "var":
             var,sep,value=line.partition(" ")
-            def get_bin(x, n): return format(x, 'b').zfill(n)
-            value=list(get_bin(int(value),16))
-            if value[0]=='-':
-                value[0]='1'
-            value=''.join(value)
+            value=get_bin(int(value),16)
             debug.writelines("\n"+value+'\n')
             beg = beg+1
             output.append(value+'\n')
@@ -284,11 +280,19 @@ def count_words(input_str,beg,dict,output):
 
         output.append((input_str,"2op"))
 
+    elif re.match(hlt_nop_rts_iret, input_str, flags=0):
+        #print(" no operand or rts or iret")
+        if(len(input_str.split())<2 ):
+            output.append((input_str, "nop_rts_hlt_iret"))  
+        else:
+            raise ValueError('A syntx error', input_str)
+
     elif re.match(reg, input_str, flags=0):
         jsr = r"[jJ][sS][rR]\s+.+"
         op_1 = r"[^bB][a-zA-Z][a-zA-Z]\s+.+"
         if re.search(jsr, input_str, flags=0):
             #print(" jump to sub instruction")
+            count =count+1
             output.append((input_str, "jsr"))
 
         elif re.search(op_1, input_str, flags=0):
@@ -321,9 +325,7 @@ def count_words(input_str,beg,dict,output):
         output.append((input_str, "var"))
 
         #print(input_str)
-    elif re.match(hlt_nop_rts_iret, input_str, flags=0):
-        #print(" no operand or rts or iret")
-        output.append((input_str, "nop_rts_hlt_iret"))
+
 
     elif re.match(label, input_str, flags=0):
         count=0
@@ -372,9 +374,13 @@ def assembler(lines,debug):
     
 
 def main():
-    input_fil_name=sys.argv[1]
-    output_fil_name = sys.argv[2]
-    debug_fil_name=sys.argv[3]
+    #input_fil_name = input("input filename:")
+    #output_fil_name = input("output filename:")
+    #debug_fil_name = input("debug filename:")
+
+    input_fil_name = "input.txt"
+    output_fil_name = "out.txt"
+    debug_fil_name = "debug.txt"   
 
     try:
         

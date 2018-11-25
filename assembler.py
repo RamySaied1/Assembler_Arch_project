@@ -27,7 +27,7 @@ def op_decoding(op,beg,dictt,opecode_dict,operand_dict):
         at,x,reg=match.groups()
         operand=at+"x"+reg.lower()
         operand_opcode=operand_dict[operand]
-        additional_word = get_bin(int(value), 16)   
+        additional_word = get_bin(int(x), 16)   
         #print(operand_opcode,"  ",additional_word)
         return(operand_opcode, additional_word)
 
@@ -381,7 +381,7 @@ def main():
     input_fil_name = "input.txt"
     output_fil_name = "out.txt"
     debug_fil_name = "debug.txt"   
-
+    print (" outttttttttttttttttttt")
     try:
         
         f = open(input_fil_name, 'r')

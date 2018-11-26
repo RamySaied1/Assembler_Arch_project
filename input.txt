@@ -3,7 +3,7 @@
 
 MOV N, R0				; R0 = 7           	address 0
 XnOR R1, R1				; R1 = 0           	address 2
-MOV #20, R3				; R3 = 20         	address 3
+MOV -20(R1), R3				; R3 = 20         	address 3
 				; memory is word addressable, so there isno
 				; problem in having odd addresses, why?
 
@@ -23,8 +23,9 @@ jsr Label2				;   not taken		address 14
 INC R3				;   R3=20		address 15
 Label2: 				;  			address 16
 BR Label3				;  			address 16
+RTS
 HLT				;			address 17
-Define  N  7				;			address 18
+Define  N  -32				;			address 18
 Define M  5				;			address 19
 
 

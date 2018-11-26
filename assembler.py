@@ -377,11 +377,12 @@ def main():
     #input_fil_name = input("input filename:")
     #output_fil_name = input("output filename:")
     #debug_fil_name = input("debug filename:")
-
-    input_fil_name = "input.txt"
-    output_fil_name = "out.txt"
-    debug_fil_name = "debug.txt"   
-    print (" outttttttttttttttttttt")
+    if (len(sys.argv)!=4):
+        print("Wrong number of parameters")
+        sys.exit()
+    input_fil_name=sys.argv[1]
+    output_fil_name = sys.argv[2]
+    debug_fil_name=sys.argv[3]   
     try:
         
         f = open(input_fil_name, 'r')

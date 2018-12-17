@@ -1,0 +1,4 @@
+00 MARIN
+01 MDrIn
+10 FlagIn
+11 Nooperation 

@@ -1,0 +1,9 @@
+0000 RnsrcIn
+0001 RndstIn
+0010 pcIn
+0011 SpIn
+0100 Temp1In
+0101 Temp2In
+0110 IRIn
+0111 IncpcIn
+1000 Nooperation 

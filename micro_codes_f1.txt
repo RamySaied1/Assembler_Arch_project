@@ -1,0 +1,9 @@
+0000 RnsrcoutA
+0001 RndstoutA
+0010 PcoutA
+0011 SpoutA
+0100 MDRoutA
+0101 Temp1outA
+0110 Temp2outA
+0111 flagoutA
+1000 Nooperation

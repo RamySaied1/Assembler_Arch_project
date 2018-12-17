@@ -1,0 +1,9 @@
+0000 RnsrcoutB
+0001 RndstoutB
+0010 sPoutB
+0011 mdroutB
+0100 Temp1outB
+0101 Temp2outB
+0110 IRaddressoutB
+0111 flagoutB
+1000 Nooperation 

@@ -1,0 +1,2 @@
+PcoutA,F=TransferA,MARIN,Read,IncpcIn,wmfc,1
+MDRoutA,F=TransferA,IRIn,plaout,0

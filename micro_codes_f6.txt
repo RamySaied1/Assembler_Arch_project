@@ -1,0 +1,7 @@
+000 ORdst
+001 ORindsrc
+010 ORinddst
+011 ORresult
+100 OROperation
+101 Branchcheck
+110 Nooperation

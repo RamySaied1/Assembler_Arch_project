@@ -1,3 +1,4 @@
+F0
 00000 F=Aandb
 00001 F=Aorb
 00010 F=Axnorb
@@ -16,5 +17,18 @@
 10001 F=A+B+carry
 10010 F=A-B
 10011 F=a-b-carry
-10100 F=a+1
-10101 F=a-1
+10100 F=a-1
+--
+F1
+---
+0000 RnsrcoutA
+0001 RndstoutA
+0010 PcoutA
+0011 SpoutA
+0100 MDRoutA
+0101 Temp1outA
+0110 Temp2outA
+0111 flagoutA
+1000 Nooperation
+----
+F2

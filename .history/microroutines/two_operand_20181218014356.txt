@@ -1,0 +1,20 @@
+0- RsrcoutA,F=TransferA,Temp1In,Plaout,0
+1- RsrcoutA,F=TransferA,Marin,Read,2
+2- RsrcoutA,,Rscrin,ORsrcind,8
+3- RsrcoutA,F=a-1,Marin,Rscrin,ORsrcind,Read,8
+4- RsrcoutA,F=TransferA,Marin,Read,wmfc,9
+5- PcoutA,F=TransferA,Marin,Read,IncpcIn,wmfc,6
+6- MdroutA,RsrcoutB,F=A+B,Marin,Read,ORsrcind,wmfc,8
+8- MdroutA,Marin,F=TransferA,Read,wmfc,9
+9- MdroutA,Temp1In,F=TransferA,Plaout
+
+10- RdstoutA,F=TransferA,Temp2In,Plaout,10
+11- RdstoutA,F=TransferA,Marin,Read,12
+12- RdstoutA,,Rscrin,ORdstind,18
+13- RdstoutA,F=a-1,Marin,Rscrin,ORdstind,Read,18
+14- RdstoutA,F=TransferA,Marin,Read,wmfc,19
+15- PcoutA,F=TransferA,Marin,Read,IncpcIn,wmfc,16
+16- MdroutA,RdstoutB,F=A+B,Marin,Read,ORdstind,wmfc,18
+18- MdroutA,Marin,F=TransferA,Read,wmfc,19
+19- MdroutA,Temp2In,F=TransferA,Plaout,0
+

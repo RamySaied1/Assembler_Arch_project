@@ -1,0 +1,4 @@
+RsrcoutA,F=TransferA,Temp1In,Plaout,0
+RsrcoutA,F=TransferA,Marin,Read,2
+RsrcoutA,,Rscrin,ORsrcind,8
+RsrcoutA,F=a-1,Marin,Rscrin,ORsrcind,Read,8

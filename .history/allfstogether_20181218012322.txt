@@ -1,0 +1,90 @@
+F0
+****
+00000 F=Aandb
+00001 F=Aorb
+00010 F=Axnorb
+00011 F=NotA
+00100 F=ShiftrightA
+00101 F=RotaterightA
+00110 F=RotaterightwithcarryA
+00111 F=ArithmeticshiftrightA
+01000 F=ShiftleftA
+01001 F=RotateleftA
+01010 F=RotateleftwithcarryA
+01011 F=TransferA
+01100 F=TransferB
+01101 F=0
+01110 F=A+B
+01111 F=A+B+carry
+10000 F=A-B
+10001 F=a-b-carry
+10010 F=a-1
+------------
+F1
+****
+0000 RnsrcoutA
+0001 RndstoutA
+0010 PcoutA
+0011 SpoutA
+0100 MDRoutA
+0101 Temp1outA
+0110 Temp2outA
+0111 flagoutA
+1000 Nooperation
+-----------
+F2
+***
+0000 RnsrcoutB
+0001 RndstoutB
+0010 sPoutB
+0011 mdroutB
+0100 Temp1outB
+0101 Temp2outB
+0110 IRaddressoutB
+0111 flagoutB
+1000 Nooperation 
+-------------
+F3
+***
+0000 RnsrcIn
+0001 RndstIn
+0010 pcIn
+0011 SpIn
+0100 Temp1In
+0101 Temp2In
+0110 IRIn
+0111 IncpcIn
+1000 Nooperation 
+-----------
+F4
+***
+00 MARIN
+01 MDrIn
+10 FlagIn
+11 Nooperation 
+-------------
+F5
+***
+00 Read
+01 Write
+10 Nooperation 
+--------------
+F6
+***
+000 ORdst
+001 ORindsrc
+010 ORinddst
+011 ORresult
+100 OROperation
+101 Branchcheck
+110 Nooperation
+--------------
+F7
+***
+0 plaout
+1 nooperation
+-------
+F8
+*****
+0 wmfc
+1 nooperation

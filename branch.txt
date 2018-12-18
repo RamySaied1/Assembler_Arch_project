@@ -1,0 +1,4 @@
+PcoutA,IRaddressoutB,F=A+B,Temp1In,Branchcheck,50
+F=TransferA,0
+Temp1outA,F=TransferA,pcIn,51
+end,0

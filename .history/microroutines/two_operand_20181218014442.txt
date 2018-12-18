@@ -1,0 +1,23 @@
+0- RsrcOutA,F=TransferA,Temp1In,PlaOut,0
+1- RsrcOutA,F=TransferA,Marin,Read,2
+2- RsrcOutA,,Rscrin,ORsrcind,8
+3- RsrcOutA,F=a-1,Marin,Rscrin,ORsrcind,Read,8
+4- RsrcOutA,F=TransferA,Marin,Read,wmfc,9
+5- PcOutA,F=TransferA,Marin,Read,IncpcIn,wmfc,6
+6- MdrOutA,RsrcOutB,F=A+B,Marin,Read,ORsrcind,wmfc,8
+8- MdrOutA,Marin,F=TransferA,Read,wmfc,9
+9- MdrOutA,Temp1In,F=TransferA,PlaOut
+
+10- RdstOutA,F=TransferA,Temp2In,PlaOut,10
+11- RdstOutA,F=TransferA,Marin,Read,12
+12- RdstOutA,,Rscrin,ORdstind,18
+13- RdstOutA,F=a-1,Marin,Rscrin,ORdstind,Read,18
+14- RdstOutA,F=TransferA,Marin,Read,wmfc,19
+15- PcOutA,F=TransferA,Marin,Read,IncpcIn,wmfc,16
+16- MdrOutA,RdstOutB,F=A+B,Marin,Read,ORdstind,wmfc,18
+18- MdrOutA,Marin,F=TransferA,Read,wmfc,19
+19- MdrOutA,Temp2In,F=TransferA,PlaOut,0
+
+20- Temp1Out
+21-
+22- 

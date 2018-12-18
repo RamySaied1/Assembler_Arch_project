@@ -1,0 +1,1 @@
+RsrcoutA,F=TransferA,Temp1In,Plaout,0

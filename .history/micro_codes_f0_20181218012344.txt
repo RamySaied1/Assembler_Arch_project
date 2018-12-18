@@ -12,9 +12,8 @@
 01011 F=TransferA
 01100 F=TransferB
 01101 F=0
-10000 F=A+B
-10001 F=A+B+carry
-10010 F=A-B
-10011 F=a-b-carry
-10100 F=a+1
-10101 F=a-1
+01110 F=A+B
+01111 F=A+B+carry
+10000 F=A-B
+10001 F=a-b-carry
+10010 F=a-1

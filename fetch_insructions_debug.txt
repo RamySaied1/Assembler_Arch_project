@@ -1,0 +1,9 @@
+PcoutA,F=TransferA,MARIN,Read,IncpcIn,wmfc,1
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0010      1000      0111              00        00       110         1         0    000001
+
+MDRoutA,F=TransferA,IRIn,plaout,0
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0100      1000      0110              11        10       110         0         1    000000
+

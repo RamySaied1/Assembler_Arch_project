@@ -1,27 +1,27 @@
-RsrcOutA,F=TransferA,Temp1In,PlaOut,0
+RnsrcoutA,F=TransferA,Temp1In,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      0100              11        10       110         0         1    000000
+01011     0000      1000      0100              11        10       110         0         1    000000
 
-RsrcOutA,F=TransferA,MarIn,Read,2
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      1000              00        00       110         1         1    000010
-
-RsrcOutA,F=a+1,RscrIn,ORsrcInd,8
+RnsrcoutA,F=TransferA,MarIn,Read,2
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10100     1000      1000      1000              11        10       110         1         1    001000
+01011     0000      1000      1000              00        00       110         1         1    000010
 
-RsrcOutA,F=a-1,MarIn,RscrIn,ORsrcInd,Read,8
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10101     1000      1000      1000              00        00       110         1         1    001000
-
-RsrcOutA,F=TransferA,MarIn,Read,wmfc,9
+RnsrcoutA,F=a+1,RnsrcIn,ORsrcInd,8
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      1000              00        00       110         1         0    001001
+10100     0000      1000      0000              11        10       110         1         1    001000
+
+RnsrcoutA,F=a-1,MarIn,RnsrcIn,ORsrcInd,Read,8
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+10101     0000      1000      0000              00        00       110         1         1    001000
+
+RnsrcoutA,F=TransferA,MarIn,Read,wmfc,9
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0000      1000      1000              00        00       110         1         0    001001
 
 PcOutA,F=TransferA,MarIn,Read,IncpcIn,wmfc,6
 
@@ -48,30 +48,30 @@ MdrOutA,Temp1In,F=TransferA,PlaOut,0
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
 01011     0100      1000      0100              11        10       110         0         1    000000
 
-RdstOutA,F=TransferA,Temp2In,PlaOut,0
+RndstoutA,F=TransferA,Temp2In,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      0101              11        10       110         0         1    000000
+01011     0001      1000      0101              11        10       110         0         1    000000
 
-RdstOutA,F=TransferA,MarIn,Read,12
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      1000              00        00       110         1         1    001100
-
-RdstOutA,F=a+1,RscrIn,ORdstInd,18
+RndstoutA,F=TransferA,MarIn,Read,12
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10100     1000      1000      1000              11        10       110         1         1    010010
+01011     0001      1000      1000              00        00       110         1         1    001100
 
-RdstOutA,F=a-1,MarIn,RscrIn,ORdstInd,Read,18
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10101     1000      1000      1000              00        00       110         1         1    010010
-
-RdstOutA,F=TransferA,MarIn,Read,wmfc,19
+RndstoutA,F=a+1,RnsrcIn,ORdstInd,18
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     1000      1000      1000              00        00       110         1         0    010011
+10100     0001      1000      0000              11        10       110         1         1    010010
+
+RndstoutA,F=a-1,MarIn,RnsrcIn,ORdstInd,Read,18
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+10101     0001      1000      0000              00        00       110         1         1    010010
+
+RndstoutA,F=TransferA,MarIn,Read,wmfc,19
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0001      1000      1000              00        00       110         1         0    010011
 
 PcOutA,F=TransferA,MarIn,Read,IncpcIn,wmfc,16
 
@@ -98,115 +98,115 @@ MdrOutA,Temp2In,F=TransferA,PlaOut,OROperation,0
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
 01011     0100      1000      0101              11        10       100         0         1    000000
 
-Temp1outA,Temp2outB,F=A+B,PlaOut,0
+Temp1outA,Temp2outB,Temp2In,F=A+B,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10000     0101      0101      1000              11        10       110         0         1    000000
+10000     0101      0101      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=A+B+carry,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10001     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outB,Temp2outA,F=A-B,PlaOut,0
+Temp1outA,Temp2outB,Temp2In,F=A+B+carry,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10010     0110      0100      1000              11        10       110         0         1    000000
+10001     0101      0101      0101              11        10       110         0         1    000000
 
-Temp1outB,Temp2outA,F=a-b-carry,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10011     0110      0100      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=Aandb,PlaOut,0
+Temp1outB,Temp2outA,Temp2In,F=A-B,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00000     0101      0101      1000              11        10       110         0         1    000000
+10010     0110      0100      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=Aorb,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00001     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=Axnorb,PlaOut,0
+Temp1outB,Temp2outA,Temp2In,F=a-b-carry,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00010     0101      0101      1000              11        10       110         0         1    000000
+10011     0110      0100      0101              11        10       110         0         1    000000
 
-Temp1outB,Temp2outA,F=A-B,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10010     0110      0100      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=a+1,PlaOut,0
+Temp1outA,Temp2outB,Temp2In,F=Aandb,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10100     0101      0101      1000              11        10       110         0         1    000000
+00000     0101      0101      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=a-1,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-10101     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=0,PlaOut,0
+Temp1outA,Temp2outB,Temp2In,F=Aorb,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01101     0101      0101      1000              11        10       110         0         1    000000
+00001     0101      0101      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=NotA,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00011     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=ShiftrightA,PlaOut,0
+Temp1outA,Temp2outB,Temp2In,F=Axnorb,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00100     0101      0101      1000              11        10       110         0         1    000000
+00010     0101      0101      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=RotaterightA,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00101     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=RotaterightwithcarryA,PlaOut,0
+Temp1outB,Temp2outA,Temp2In,F=A-B,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00110     0101      0101      1000              11        10       110         0         1    000000
+10010     0110      0100      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=ArithmeticshiftrightA,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00111     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=ShiftleftA,PlaOut,0
+Temp2outA,Temp2In,F=a+1,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01000     0101      0101      1000              11        10       110         0         1    000000
+10100     0110      1000      0101              11        10       110         0         1    000000
 
-Temp1outA,Temp2outB,F=RotateleftA,PlaOut,0
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01001     0101      0101      1000              11        10       110         0         1    000000
-
-Temp1outA,Temp2outB,F=RotateleftwithcarryA,PlaOut,0
+Temp2outA,Temp2In,F=a-1,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01010     0101      0101      1000              11        10       110         0         1    000000
+10101     0110      1000      0101              11        10       110         0         1    000000
 
-Temp2outA,F=TransferA,RdstIn,43
-
-F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     0110      1000      1000              11        10       110         1         1    101011
-
-Temp2outA,F=TransferA,MarIn,42
+Temp2In,F=0,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-01011     0110      1000      1000              00        10       110         1         1    101010
+01101     1000      1000      0101              11        10       110         0         1    000000
 
-write,wmfc,43
+Temp2outA,Temp2In,F=NotA,PlaOut,0
 
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
-00000     1000      1000      1000              11        01       110         1         0    101011
+00011     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=ShiftrightA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+00100     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=RotaterightA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+00101     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=RotaterightwithcarryA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+00110     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=ArithmeticshiftrightA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+00111     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=ShiftleftA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01000     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=RotateleftA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01001     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,Temp2In,F=RotateleftwithcarryA,PlaOut,0
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01010     0110      1000      0101              11        10       110         0         1    000000
+
+Temp2outA,F=TransferA,RndstIn,42
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0110      1000      0001              11        10       110         1         1    101010
+
+Temp2outA,F=TransferA,MarIn,41
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+01011     0110      1000      1000              00        10       110         1         1    101001
+
+write,wmfc,42
+
+F0        F1        F2        F3                F4        F5        F6        F7        F8      next
+00000     1000      1000      1000              11        01       110         1         0    101010
 
 End,0
 F0        F1        F2        F3                F4        F5        F6        F7        F8      next
